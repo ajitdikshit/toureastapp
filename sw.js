@@ -4,6 +4,7 @@ const API_CACHE_NAME = "tourest-api-cache-v1";
 // List of local files to cache
 const FILES_TO_CACHE = [
   "/home.html",
+  "/index.html",
   "/details.html",
   "/travel.html",
   "/styles.css",
@@ -78,3 +79,4 @@ self.addEventListener("fetch", event => {
     })
   );
 });
+
