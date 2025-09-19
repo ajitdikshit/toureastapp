@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Travel Plan</title>
+  <link rel="stylesheet" href="travel.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
+/>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css"
+/>
+<script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+
+</head>
+<body>
+  <div class="container">
+    <h1 id="placeName">Navigate to your destination</h1>
+    <div id="map"></div>
+    <div id="routes">
+      <h2>Travel Routes</h2>
+      <select id="travelMode">
+        <option value="driving-car">🚗 Driving</option>
+        <option value="foot-walking">🚶 Walking</option>
+        <option value="cycling-regular">🚴 Cycling</option>
+      </select>
+      <button id="showRoute">Show Route</button>
+    </div>
+ 
+  </div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="travel.js"></script>
+  <button id="navigateBtn">
+  🚗 Navigate
+</button>
+
+</body>
+</html>
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOUREAST - My Bucket List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+ 
+    <img src="logo.png" alt="App Logo" class="logo">
+     <nav>
+      <a href="home.html">Home</a>
+      <a href="bucket.html">Bucket List</a>
+      <a href="events.html">Event Manager</a>
+      <a href="community.html">Community</a>
+      <a href="https://cdn.botpress.cloud/webchat/v3.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/07/14/08/20250714085027-U59VKKK0.json">TourEast Helper</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>My Bucket List</h2>
+    <ul id="bucketList" class="list"></ul>
+  </section>
+
+  <script src="app.js"></script>
+  <script>
+    window.onload = renderBucket
+  </script>
+</body>
+</html>

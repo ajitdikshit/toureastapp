@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <meta charset="UTF-8">
+  <title>TOUREAST COMMUNITY</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>TOUREAST COMMUNITY</h1>
+    <p>Share and explore travel experiences in Northeast India</p>
+  </header>
+  <main>
+    <section class="post-form-section">
+      <h2>Share Your Experience</h2>
+      <form id="postForm">
+        <input type="text" id="nameInput" maxlength="24" placeholder="Your Name" required>
+        <textarea id="experienceInput" rows="4" maxlength="300" placeholder="Share your travel experience..." required></textarea>
+        <button type="submit">Post</button>
+      </form>
+    </section>
+    <section class="posts-container" id="postsContainer">
+      <!-- Posts will be dynamically added here -->
+    </section>
+  </main>
+  <footer>
+    <span>&copy; 2025 TOUREAST COMMUNITY. Made for Northeast India travel enthusiasts.</span>
+  </footer>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

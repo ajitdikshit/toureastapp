@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TOUREAST - Authentication</title>
+  <style>
+   /* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  background: linear-gradient(135deg, #1e293b, #3c4a6e);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+/* Container with 3D flip animation */
+.auth-container {
+  background: #0f1724;
+  padding: 2.5rem 3rem;
+  width: 360px;
+  border-radius: 20px;
+  box-shadow:
+    0 15px 35px rgba(20,37,68,0.5),
+    inset 0 0 130px #60a5fa;
+  color: #f8fafc;
+  transform-style: preserve-3d;
+  animation: elevate 1s ease forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Form Title with fade & scale */
+h2 {
+  font-weight: 800;
+  font-size: 2.6rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeScaleIn 0.8s ease forwards 0.3s;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px #4a7ddb;
+}
+
+/* Input styles with soft glow & inset shadows */
+input {
+  background: #172436;
+  border: none;
+  border-radius: 12px;
+  color: #d1d5db;
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  box-shadow:
+    inset 2px 2px 4px rgba(255 255 255 / 0.1),
+    inset -3px -3px 6px rgba(0 0 0 / 0.5);
+  transition: box-shadow 0.3s ease, color 0.3s ease;
+  width: 100%;
+  outline-offset: 3px;
+}
+
+input::placeholder {
+  color: #6b7280;
+}
+
+
+/* Focus effect and subtle animation */
+input:focus {
+  box-shadow:
+    0 0 8px 2px #60a5fa,
+    inset 2px 2px 4px rgba(255 255 255 / 0.2),
+    inset -3px -3px 6px rgba(0 0 0 / 0.5);
+  color: #60a5fa;
+  outline: none;
+  animation: focusPulse 1.5s ease infinite alternate;
+}
+
+/* Button with gradient glow and scale */
+button {
+  width: 100%;
+  background: linear-gradient(90deg, #60a5fa, #4154a4);
+  color: white;
+  font-weight: 700;
+  font-size: 1.22rem;
+  padding: 15px 0;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    0 0 20px #60a5fa,
+    0 0 35px #4a6edb;
+  transition: box-shadow 0.3s ease, transform 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0 0 3px #204070;
+  user-select: none;
+  outline-offset: 4px;
+}
+
+/* Button hover pulse glow */
+button:hover {
+  box-shadow:
+    0 0 30px #60a5fa,
+    0 0 45px #4162b8;
+  transform: scale(1.05);
+}
+
+/* Button active scale-down */
+button:active {
+  transform: scale(0.93);
+  box-shadow:
+    0 0 12px #4171c0;
+}
+
+/* Message box styles */
+#message {
+  margin-top: 18px;
+  font-weight: 600;
+  font-size: 1rem;
+  min-height: 24px;
+  text-align: center;
+  user-select: none;
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+  color: #60a5fa;
+}
+
+/* Toggle link styling with hover glow and cursor */
+.toggle-link {
+  margin-top: 22px;
+  display: block;
+  color: #60a5fa;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+  text-shadow: 0 0 10px #1e3a8a;
+}
+
+.toggle-link:hover{
+  text-shadow: 0 0 25px #60a5fa;
+  color: #a5bbff;
+  text-decoration: underline;
+}
+
+/* Animations */
+
+/* Container elevate fade in */
+@keyframes elevate {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotateX(25deg) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0) scale(1);
+  }
+}
+
+/* Fade and scale text */
+@keyframes fadeScaleIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Pulse glow on input focus */
+@keyframes focusPulse {
+  0% {
+    box-shadow:
+      0 0 4px 1px #60a5fa,
+      inset 2px 2px 4px rgba(255 255 255 / 0.2),
+      inset -3px -3px 6px rgba(0 0 0 / 0.5);
+  }
+  100% {
+    box-shadow:
+      0 0 10px 3px #60a5fa,
+      inset 2px 2px 4px rgba(255 255 255 / 0.3),
+      inset -3px -3px 6px rgba(0 0 0 / 0.5);
+  }
+}
+
+/* Fade in message */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <h2 id="formTitle">Sign In</h2>
+
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+
+    <button id="authButton">Sign In</button>
+
+    <div id="message"></div>
+    <div class="toggle-link" id="toggleAuth">Don't have an account? Sign Up</div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAdTcCMT_0c1uyO1ZAAl_vwLI7Hd6eHIIU",
+      authDomain: "toureast-c1b24.firebaseapp.com",
+      projectId: "toureast-c1b24",
+      storageBucket: "toureast-c1b24.firebasestorage.app",
+      messagingSenderId: "381454659894",
+      appId: "1:381454659894:web:afd487ddc2263cffd2c397",
+      measurementId: "G-VRRE13LB3Q"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const authButton = document.getElementById('authButton');
+    const messageDiv = document.getElementById('message');
+    const toggleAuth = document.getElementById('toggleAuth');
+    const formTitle = document.getElementById('formTitle');
+
+    let isSigningIn = true;
+
+    function showMessage(msg, isError = false) {
+      messageDiv.textContent = msg;
+      messageDiv.style.color = isError ? "#ef4444" : "#60a5fa";
+    }
+
+    toggleAuth.addEventListener('click', () => {
+      isSigningIn = !isSigningIn;
+      if (isSigningIn) {
+        formTitle.textContent = "Sign In";
+        authButton.textContent = "Sign In";
+        toggleAuth.textContent = "Don't have an account? Sign Up";
+      } else {
+        formTitle.textContent = "Sign Up";
+        authButton.textContent = "Sign Up";
+        toggleAuth.textContent = "Already have an account? Sign In";
+      }
+      showMessage("");
+    });
+
+    authButton.addEventListener('click', () => {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      if (!email || !password) {
+        showMessage("Please enter email & password", true);
+        return;
+      }
+
+      if (isSigningIn) {
+  signInWithEmailAndPassword(auth, email, password)
+    .then(userCredential => {
+      showMessage("Signed in successfully!");
+      window.location.href = "home.html";  // Redirect here
+    })
+    .catch(error => {
+      showMessage(error.message, true);
+    });
+} else {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(userCredential => {
+      showMessage("Account created! Redirecting to home...");
+      window.location.href = "home.html";  // Redirect upon signup
+    })
+    .catch(error => {
+      showMessage(error.message, true);
+    });
+}
+
+    });
+
+    // Optional: Monitor auth state changes
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        console.log("Logged in user:", user.email);
+      } else {
+        console.log("Signed out");
+      }
+    });
+  </script>
+</body>
+</html>

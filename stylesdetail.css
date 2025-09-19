@@ -1,0 +1,79 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #0f1724;
+  color: #f1f5f9;
+}
+
+.app-header {
+  padding: 16px;
+  background: #1e293b;
+  text-align: center;
+}
+
+#detailsContainer {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
+#detailsContainer img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+#detailsContainer h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#detailsContainer p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+#detailsContainer button {
+  padding: 12px 20px;
+  background: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#detailsContainer button:hover {
+  background: #2563eb;
+}
+
+.trip-info {
+  background: #1e293b;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.trip-info p {
+  margin: 5px 0;
+}
+
+#detailsContainer ul {
+  padding-left: 20px;
+}
+
+#detailsContainer li {
+  margin-bottom: 5px;
+}
+#internetStatus{
+  margin-bottom: 50px;
+  padding: 50px;
+  backdrop-filter: blur(10px);
+  background-color: #f1f5f954;
+  border-radius: 20px;
+  font-size: 25px;
+}

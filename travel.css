@@ -1,0 +1,205 @@
+/* General reset and base */
+* {
+  box-sizing: border-box;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: #0f1724;
+  color: #f8fafc;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Container styling */
+.container {
+  max-width: 980px;
+  margin: 1rem auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Page Heading */
+h1#placeName {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #60a5fa;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 0.3s;
+}
+
+/* Map container */
+#map {
+  height: 380px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(24, 56, 112, 0.5);
+  transition: box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 0.5s;
+}
+
+#map:hover {
+  box-shadow: 0 10px 28px rgba(24, 56, 112, 0.8);
+}
+
+/* Routes section */
+#routes {
+  background-color: #1e293b;
+  padding: 1.3rem 1.4rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(24, 56, 112, 0.3);
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 0.7s;
+}
+
+/* Routes Heading */
+#routes h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.6rem;
+  color: #60a5fa;
+  font-weight: 600;
+  user-select: none;
+}
+
+/* Travel Mode selector */
+#travelMode {
+  background-color: #172436;
+  border: none;
+  color: #a1aab8;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  box-shadow: inset 0 0 10px rgba(86, 126, 216, 0.4);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+#travelMode:hover,
+#travelMode:focus {
+  background-color: #204070;
+  color: #cbd5e1;
+  outline: none;
+}
+
+/* Show Route button */
+#showRoute {
+  background-color: #60a5fa;
+  border: none;
+  color: white;
+  font-weight: 700;
+  padding: 12px 26px;
+  margin-left: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 0 11px #60a5fa;
+  user-select: none;
+  transition: background-color 0.3s ease, box-shadow 0.4s ease, transform 0.2s ease;
+}
+
+#showRoute:hover {
+  background-color: #4283d7;
+  box-shadow: 0 0 18px #4283d7;
+  transform: scale(1.05);
+}
+
+#showRoute:active {
+  transform: scale(0.97);
+}
+
+/* Hotels list */
+#hotelsList {
+  font-size: 1rem;
+  max-width: 100%;
+  color: #d1d5db;
+  background-color: #172236;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(24, 56, 112, 0.5);
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 0.9s;
+  min-height: 60px;
+  user-select: none;
+}
+
+/* Navigate Button */
+#navigateBtn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #60a5fa;
+  color: white;
+  padding: 15px 22px;
+  border-radius: 50px;
+  box-shadow: 0 4px 16px rgba(96, 165, 250, 0.8);
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  transition: background-color 0.3s ease, box-shadow 0.4s ease, transform 0.2s ease;
+  z-index: 999;
+}
+
+#navigateBtn:hover {
+  background-color: #4283d7;
+  box-shadow: 0 0 22px #4283d7;
+  transform: scale(1.1);
+}
+
+#navigateBtn:active {
+  transform: scale(0.95);
+}
+
+/* Responsive media queries */
+@media (max-width: 720px) {
+  #map {
+    height: 300px;
+  }
+  .container {
+    padding: 1.2rem 1rem;
+  }
+  #showRoute {
+    margin-left: 0;
+    width: 100%;
+  }
+  #routes {
+    padding: 1rem 1rem;
+  }
+  #hotelsList {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 400px) {
+  #map {
+    height: 240px;
+  }
+  #showRoute {
+    font-size: 1rem;
+    padding: 10px 16px;
+  }
+  #navigateBtn {
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px);}
+  100% { opacity: 1; transform: translateY(0);}
+}

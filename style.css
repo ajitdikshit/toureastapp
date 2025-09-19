@@ -1,0 +1,127 @@
+:root {
+  --dark-blue-bg: #0A2342;
+  --mid-blue-accent: #185198;
+  --light-blue: #2196f3;
+  --card-bg: #14274e;
+  --border-waves: #23aaff;
+  --text-light: #e0e6f6;
+  --btn-blue: #1e90ff;
+  --btn-hover: #23aaff;
+}
+
+body {
+  background: var(--dark-blue-bg);
+  color: var(--text-light);
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  margin: 0;
+  transition: background 0.7s;
+}
+
+header {
+  padding: 2rem 0 0.5rem 0;
+  text-align: center;
+  background: linear-gradient(90deg, var(--dark-blue-bg) 60%, var(--mid-blue-accent) 100%);
+  border-bottom: 2px solid var(--border-waves);
+  transition: background 0.7s;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: 2px;
+}
+
+.post-form-section {
+  max-width: 500px;
+  margin: 2rem auto 1.2rem;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(32, 32, 150, 0.23);
+  transition: box-shadow 0.3s, background 0.8s;
+}
+
+.post-form-section:hover {
+  box-shadow: 0 8px 24px rgba(33, 170, 255, 0.23);
+  background: var(--mid-blue-accent);
+}
+
+input, textarea {
+  width: 100%;
+  border: none;
+  background: var(--dark-blue-bg);
+  color: var(--text-light);
+  padding: 0.7em;
+  margin-bottom: 1em;
+  border-radius: 0.5em;
+  transition: background 0.6s;
+}
+
+input:focus, textarea:focus {
+  background: var(--card-bg);
+  outline: 2px solid var(--btn-blue);
+}
+
+button {
+  padding: 0.6em 1.2em;
+  border: none;
+  border-radius: 0.5em;
+  background: var(--btn-blue);
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: var(--btn-hover);
+  transform: scale(1.05);
+}
+
+.posts-container {
+  max-width: 700px;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.post-card {
+  background: var(--card-bg);
+  border-left: 4px solid var(--btn-blue);
+  padding: 1rem 1.2rem;
+  border-radius: 0.7rem;
+  box-shadow: 0 2px 8px rgba(33, 170, 255, 0.09);
+  transition: box-shadow 0.3s, background 0.7s;
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  animation: fade-in-up 0.7s forwards;
+}
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1.0);
+  }
+}
+
+.post-card:hover {
+  background: var(--mid-blue-accent);
+  box-shadow: 0 8px 24px rgba(33, 170, 255, 0.17);
+}
+
+.post-card .post-author {
+  font-weight: 600;
+  color: var(--light-blue);
+  margin-bottom: 0.2rem;
+  font-size: 1.03em;
+}
+
+footer {
+  text-align: center;
+  color: var(--text-light);
+  background: var(--mid-blue-accent);
+  padding: 0.7rem;
+  margin-top: 1.5rem;
+  border-top: 2px solid var(--border-waves);
+}
