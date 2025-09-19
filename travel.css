@@ -36,7 +36,7 @@ h1#placeName {
 
 /* Map container */
 #map {
-  height: 75%;
+  height: 600px;
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(24, 56, 112, 0.5);
   transition: box-shadow 0.3s ease;
@@ -203,4 +203,5 @@ h1#placeName {
   0% { opacity: 0; transform: translateY(20px);}
   100% { opacity: 1; transform: translateY(0);}
 }
+
 
