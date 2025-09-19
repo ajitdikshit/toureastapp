@@ -5,15 +5,8 @@ const API_CACHE_NAME = "tourest-api-cache-v1";
 const FILES_TO_CACHE = [
   "/home.html",
   "/index.html",
-  "/details.html",
-  "/travel.html",
-  "/styles.css",
-  "/app.js",
-  "/details.js",
-  "/travel.js",
-  "/logo.png",
-  "/icons/icon-192.png",
-  "/icons/icon-512.png"
+ 
+  "/logo.png"
 ];
 
 // Install service worker
@@ -79,4 +72,5 @@ self.addEventListener("fetch", event => {
     })
   );
 });
+
 
