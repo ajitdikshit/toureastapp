@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+ <link rel="manifest" href="manifest.json">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>TourEast-Weather Insights</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  /* Background gradient animation */
+  @keyframes bgGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Fade and slide animation for container */
+  @keyframes fadeSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Icon pop animation */
+  @keyframes iconPopIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    70% {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Button glow transition */
+ 
+
+  /* Global resets */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(270deg, #081c3a, #0b2a5a, #0a244f, #123a6d);
+    background-size: 800% 800%;
+    animation: bgGradient 30s ease infinite;
+    color: #abd7ff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1rem 3rem;
+    min-height: 100vh;
+  }
+
+  .container {
+    background: rgba(0, 19, 52, 0.75);
+    max-width: 400px;
+    width: 100%;
+    border-radius: 28px;
+    box-shadow: 0 0 25px 6px rgba(0, 123, 255, 0.5);
+    padding: 2.8rem 2.5rem 3rem;
+    backdrop-filter: blur(16px);
+    user-select: none;
+    animation: fadeSlideIn 1.1s ease forwards;
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin: 0 0 1.25rem;
+    letter-spacing: 0.13em;
+    text-shadow: 0 0 12px rgba(0, 140, 255, 0.8);
+    color: #a5d0ff;
+  }
+
+  form {
+    display: flex;
+    margin-bottom: 2rem;
+  }
+
+  input[type="text"] {
+    flex: 1;
+    font-size: 1.15rem;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    background: rgba(255 255 255 / 0.1);
+    color: #d6ecff;
+    box-shadow: inset 0 0 13px rgba(0, 130, 255, 0.45);
+    transition: background-color 0.35s ease, box-shadow 0.35s ease;
+    outline-offset: 2px;
+  }
+
+  input[type="text"]::placeholder {
+    color: #a2d0ffcc;
+  }
+
+  input[type="text"]:focus {
+    background: rgba(0, 130, 255, 0.15);
+    box-shadow: inset 0 0 22px rgba(0, 180, 255, 0.85);
+  }
+
+  button {
+    background: #007aff;
+    border: none;
+    padding: 0 1.3rem;
+    font-weight: 800;
+    font-size: 1.15rem;
+    border-radius: 0 30px 30px 0;
+    color: #e1f0ff;
+    cursor: pointer;
+    box-shadow: 0 0 17px 4px rgba(0, 140, 255, 0.75);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    animation: buttonPulse 3s ease-in-out infinite;
+  }
+
+  button:hover,
+  button:focus {
+    background: #00a9ff;
+    box-shadow: 0 0 25px 10px rgba(0, 205, 255, 1);
+    outline: none;
+  }
+
+  .weather-info {
+    min-height: 210px;
+    text-align: center;
+    color: #ace3ff;
+    font-weight: 600;
+  }
+
+  .location {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+    color: #87bcff;
+    text-shadow: 0 0 14px #0a59a1cc;
+    transition: color 0.7s ease;
+  }
+
+  .temp {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    color: #6ababf;
+    text-shadow:
+      0 0 15px #3b9eff,
+      0 0 22px #3399ffaa,
+      0 0 28px #54b1fcaa;
+    margin: 0.15rem 0 0.7rem;
+    transition: color 1s ease;
+  }
+
+  .description {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #93caffcc;
+    margin-bottom: 1.3rem;
+    text-transform: capitalize;
+    letter-spacing: 0.04em;
+  }
+
+  .icon {
+    font-size: 7rem;
+    margin-bottom: 0.45rem;
+    animation: iconPopIn 1.1s ease forwards;
+    color: #3baaffdd;
+    text-shadow:
+      0 0 18px #3baaffee,
+      0 0 30px #0a65b8bb;
+  }
+
+  .additional {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #84a9c9bb;
+  }
+
+  .additional div {
+    flex: 1;
+    background: rgba(15, 40, 75, 0.35);
+    padding: 12px 14px;
+    border-radius: 14px;
+    box-shadow:
+      inset 0 0 8px #1162d9aa,
+      0 0 5px #06487f88;
+    transition: background-color 0.3s ease;
+  }
+
+  .additional div span {
+    display: block;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #538dd400;
+    margin-bottom: 4px;
+    color: #61aaffcc;
+    letter-spacing: 0.02em;
+  }
+
+  .error {
+    color: #ff6a70;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    text-shadow: 0 0 8px #ff6a70cc;
+  }
+
+  /* Responsive for small devices */
+  @media (max-width: 420px) {
+    .container {
+      padding: 2rem 2rem 2.8rem;
+    }
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 1rem;
+    }
+    .temp {
+      font-size: 4.4rem;
+    }
+    .icon {
+      font-size: 6rem;
+      margin-bottom: 0.3rem;
+    }
+    .additional {
+      gap: 12px;
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .temp {
+      font-size: 3.6rem;
+    }
+    input[type="text"] {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+    
+  <main class="container" role="main" aria-label="Weather Application">
+    <h1>TourEast-Weather Now</h1>
+    <form id="weatherForm" aria-label="Enter city and get weather">
+      <input
+        type="text"
+        id="cityInput"
+        aria-required="true"
+        placeholder="Type your city name"
+        autocomplete="off"
+      />
+      <button type="submit" aria-label="Get weather">Go</button>
+    </form>
+    <section class="weather-info" id="weatherInfo" aria-live="polite" aria-atomic="true">
+      <!-- Weather data appears here -->
+    </section>
+  </main>
+<script>
+  const apiKey = 'e56cd0b1071ba234ce200967361d2c52'; // Insert your API key here
+  const weatherForm = document.getElementById('weatherForm');
+  const cityInput = document.getElementById('cityInput');
+  const weatherInfo = document.getElementById('weatherInfo');
+
+  const iconMap = {
+    "01d": "☀️",
+    "01n": "🌙",
+    "02d": "⛅",
+    "02n": "☁️",
+    "03d": "☁️",
+    "03n": "☁️",
+    "04d": "☁️",
+    "04n": "☁️",
+    "09d": "🌧️",
+    "09n": "🌧️",
+    "10d": "🌦️",
+    "10n": "🌦️",
+    "11d": "⛈️",
+    "11n": "⛈️",
+    "13d": "❄️",
+    "13n": "❄️",
+    "50d": "🌫️",
+    "50n": "🌫️"
+  };
+
+  function kelvinToCelsius(k) {
+    return (k - 273.15).toFixed(1);
+  }
+
+  function kelvinToFahrenheit(k) {
+    return ((k - 273.15) * 9 / 5 + 32).toFixed(1);
+  }
+
+  function createWeatherHTML(data) {
+    const location = `${data.name}, ${data.sys.country}`;
+    const tempC = kelvinToCelsius(data.main.temp);
+    const tempF = kelvinToFahrenheit(data.main.temp);
+    const desc = data.weather[0].description;
+    const iconCode = data.weather[0].icon;
+    const icon = iconMap[iconCode] || '❔';
+    const humidity = data.main.humidity;
+    const windSpeed = data.wind.speed;
+    const feelsLikeC = kelvinToCelsius(data.main.feels_like);
+
+    return `
+      <div class="location" aria-label="Location name">${location}</div>
+      <div class="icon" aria-label="Weather icon">${icon}</div>
+      <div class="temp" aria-label="Temperature">${tempC}°C / ${tempF}°F</div>
+      <div class="description" aria-label="Weather description">${desc}</div>
+      <div class="additional" aria-label="Additional weather details">
+        <div><span>Humidity</span>${humidity}%</div>
+        <div><span>Wind</span>${windSpeed} m/s</div>
+        <div><span>Feels Like</span>${feelsLikeC}°C</div>
+      </div>
+    `;
+  }
+
+  function showError(message) {
+    weatherInfo.innerHTML = `<div class="error" role="alert">${message}</div>`;
+  }
+
+  async function fetchWeather(city) {
+    try {
+      weatherInfo.innerHTML = `<p style="font-size:1.2rem; color:#7db8ff; margin-top: 1.2rem;">Fetching weather data...</p>`;
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}`
+      );
+      if (!response.ok) {
+        if (response.status === 404) throw new Error('City not found. Please try again.');
+        else throw new Error('An error occurred fetching weather data.');
+      }
+      const data = await response.json();
+      weatherInfo.innerHTML = createWeatherHTML(data);
+    } catch (error) {
+      showError(error.message);
+    }
+  }
+
+  weatherForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const city = cityInput.value.trim();
+    if (!city) {
+      showError('Please enter a city name.');
+      return;
+    }
+    fetchWeather(city);
+  });
+
+  // Load weather data for default city on page load
+  window.addEventListener('load', () => {
+    fetchWeather('New Delhi');
+  });
+</script>
+</body>
+</html>
